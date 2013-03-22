@@ -15,5 +15,6 @@ if(!defined('ABSPATH')) exit;
 require_once dirname(__FILE__).'/src/ct-main.php';
 
 if(class_exists('CT_Main')){
+	register_activation_hook(__FILE__,array('CT_Main','__activate'));
 	CT_Main::init();
 }

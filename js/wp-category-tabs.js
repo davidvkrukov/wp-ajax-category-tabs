@@ -6,6 +6,9 @@ jQuery(document).ready(function($){
 			});
 		},
 		beforeActivate:function(event,ui){
+			if($('#wpact_readMore').is(':hidden')){
+				$('#wpact_readMore').show();
+			}
 			var cat_id=$(ui.newTab.context).data('cat_id');
 			$.ajax({
 				url:wpct_ajaxurl,
@@ -13,6 +16,18 @@ jQuery(document).ready(function($){
 				data:{action:'load_category_posts',category:cat_id},
 				success:function(resp){
 					$(ui.newPanel).html(resp);
+					$('#wpact_readMore').on('click',function(){
+						$.ajax({
+							url:wpct_ajaxurl,
+							type:'post',
+							data:{action:'load_category_posts',category:cat_id,full_list:1},
+							success:function(resp){
+								$(ui.newPanel).html(resp);
+							}
+						});
+						$(this).hide();
+						return false;
+					});
 				}
 			});
 		}
