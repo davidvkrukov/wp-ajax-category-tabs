@@ -1,0 +1,2 @@
+wp-ajax-category-tabs
+=====================
