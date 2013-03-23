@@ -1,11 +1,11 @@
 jQuery(document).ready(function($){
-	$("#wp_category_tabs").tabs({
+	var $tabs=$("#wp_category_tabs").tabs({
 		beforeLoad:function(event,ui){
 			ui.jqXHR.error(function(){
 				ui.panel.html("Couldn't load this tab. We'll try to fix this as soon as possible. If this wouldn't be a demo.");
 			});
 		},
-		beforeActivate:function(event,ui){
+		activate:function(event,ui){
 			if($('#wpact_readMore').is(':hidden')){
 				$('#wpact_readMore').show();
 			}
@@ -32,4 +32,6 @@ jQuery(document).ready(function($){
 			});
 		}
 	});
+	$tabs.tabs('select',1);
+	$tabs.tabs('select',0);
 });

@@ -21,7 +21,7 @@ if(!is_array($_flags)){
 <?php $i++;endforeach; ?>
 </ul>
 <div style="clear:both;"></div>
-<?php $source=get_post_meta($post->ID,'wpact_source',true); ?>
+<?php $source=unserialize(get_post_meta($post->ID,'wpact_source',true)); ?>
 <h2>Source link</h2>
 <label for="wpact_source_title">
 	<strong style="display:block;">Title: </strong>

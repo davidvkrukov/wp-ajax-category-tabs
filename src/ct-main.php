@@ -91,17 +91,24 @@ class CT_Main{
 	}
 	
 	public function _saveMetaboxValues($post_id){
-		if($_POST['post_type']=='page'){
+		if(isset($_POST['post_type'])&&$_POST['post_type']=='page'){
+			return;
+		}
+		if(!isset($_POST['post_ID'])){
 			return;
 		}
 		$post_ID=$_POST['post_ID'];
-		$wpact_flags=$_POST['wpact_flag'];
-		if(is_array($wpact_flags)){
-			update_post_meta($post_ID,'wpact_flag',serialize($wpact_flags));
+		if(isset($_POST['wpact_flag'])){
+			$wpact_flags=$_POST['wpact_flag'];
+			if(is_array($wpact_flags)){
+				update_post_meta($post_ID,'wpact_flag',serialize($wpact_flags));
+			}
 		}
-		$wpact_source=$_POST['wpact_source'];
-		if(isset($wpact_source['url'])&&isset($wpact_source['title'])&&trim($wpact_source['url'])!=''&&trim($wpact_source['title'])!=''){
-			update_post_meta($post_ID,'wpact_source',serialize($wpact_source));
+		if(isset($_POST['wpact_source'])){
+			$wpact_source=$_POST['wpact_source'];
+			if(isset($wpact_source['url'])&&isset($wpact_source['title'])&&trim($wpact_source['url'])!=''&&trim($wpact_source['title'])!=''){
+				update_post_meta($post_ID,'wpact_source',serialize($wpact_source));
+			}
 		}
 	}
 	
@@ -115,11 +122,11 @@ class CT_Main{
 	
 	public function ajax_loadCategoryPosts(){
 		if(isset($_POST['category'])){
-			$args=array('offset'=>1,'category'=>intval($_POST['category']));
+			$args=array('offset'=>0,'category'=>intval($_POST['category']));
 			if(!isset($_POST['full_list'])){
 				$args['numberposts']=3;
 			}
-			$_posts=get_posts($args);
+			$_posts=wp_get_recent_posts($args);
 			ob_start();
 			require dirname(dirname(__FILE__)).'/tpl/_posts.php';
 			$html=ob_get_contents();

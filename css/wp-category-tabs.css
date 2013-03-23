@@ -46,6 +46,7 @@
 	color:#030cf5;
 }
 #wp_category_tabs .ajaxReadMore{
+	padding:10px;
 	text-align:center;
 	background:#c7dae1 !important;
 	border-left:solid #005c7e 1px !important;
@@ -78,4 +79,7 @@
 	bottom:-20px;
 	padding:0 20px;
 	background:#fff;
+}
+.wpact_container{
+	clear:both;
 }
