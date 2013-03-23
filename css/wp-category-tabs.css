@@ -40,7 +40,11 @@
 	-khtml-border-bottom-right-radius:0px !important;
 }
 #wp_category_tabs .ajaxPostDesc{
-	border-bottom:solid #aaa 2px !important;
+	padding:10px 5px 20px 5px;
+	border-bottom:solid #aaa 1px !important;
+}
+#wp_category_tabs .sourceLine{
+	padding:10px 0px;
 }
 #wp_category_tabs .sourceLine a{
 	color:#030cf5;
