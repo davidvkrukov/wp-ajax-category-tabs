@@ -3,7 +3,7 @@
  * @author David V. Krukov
  */
 
-class CT_Main{
+class WPACT_Main{
 	private static $__instance=null;
 	
 	protected function __construct(){
