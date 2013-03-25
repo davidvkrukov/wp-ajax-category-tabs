@@ -12,9 +12,8 @@ License: GPL2
 // Exit if accessed directly
 if(!defined('ABSPATH')) exit;
 
-require_once dirname(__FILE__).'/src/ct-main.php';
+require_once dirname(__FILE__).'/src/wp-ajax-category-tabs-main.php';
 
-if(class_exists('WPACT_Main')){
-	register_activation_hook(__FILE__,array('WPACT_Main','__activate'));
-	WPACT_Main::init();
+if(class_exists('WP_Ajax_Category_Tabs_Main')){
+	WP_Ajax_Category_Tabs_Main::init();
 }
